@@ -1,0 +1,207 @@
+﻿Question_ID,Question,Expected_Answer,LLM_Answer,Matched_Keywords,Missing_Keywords,Score,Status,Source,Model,Release
+Q001,What is tokenization in large language models?,Tokenization splits input text into smaller units called tokens.,"Tokenization is a crucial step in the processing of large language models. It involves breaking down input text into individual tokens, which are the basic units of language that can be processed by the model.
+
+In the context of large language models, tokenization typically involves the following steps:
+
+1. **Text Preprocessing**: The input text is preprocessed to remove any unnecessary characters, such as punctuation, special characters, and whitespace.
+2. **Tokenization**: The preprocessed text is then broken down into individual tokens, which can be words, subwords, or even characters. The choice of tokenization scheme depends on the specific model and its architecture.
+3. **Subwording**: Many modern large language models use subwording, which involves breaking down words into smaller subwords or word pieces. This is done to handle out-of-vocabulary words and improve the model's ability to handle unseen text.
+
+Some common tokenization schemes used in large language models include:
+
+1. **WordPiece Tokenization**: This is a popular tokenization scheme used in BERT and other transformer-based models. It breaks down words into subwords, where each subword is a contiguous sequence of characters in the word.
+2. **Character-Level Tokenization**: This scheme breaks down text into individual characters, which can be useful for models that require character-level attention.
+3. **Word Tokenization**: This scheme breaks down text into individual words, which is useful for models that require word-level attention.
+
+The choice of tokenization scheme depends on the specific requirements of the model and the task it is being used for. Tokenization is an important step in the processing of large language models, as it allows the model to process text in a way that is efficient and effective.","text, tokens",splitting,66.67,PASS,https://huggingface.co/docs/transformers/en/tokenizer_summary,llama3.2,v0.1
+Q002,What is a token?,"A token is a unit of text such as a word, subword or character.","A token can refer to different things depending on the context. Here are a few possible meanings:
+
+1. **Digital token**: In the context of blockchain, cryptocurrency, or digital wallets, a token is a digital asset that represents a unit of exchange or a specific value. Examples include cryptocurrencies like Ethereum or Bitcoin, as well as tokens used for specific purposes, such as gaming or social media.
+2. **Physical token**: A physical token can be a physical object that represents a value, privilege, or identity. Examples include coins, stamps, or loyalty cards.
+3. **Token (programming)**: In programming, a token is a small unit of text or code that has a specific meaning or function. Tokens are often used in programming languages to represent keywords, symbols, or other elements of the language.
+4. **Token (identity)**: In the context of identity verification or authentication, a token can be a unique identifier or code that represents an individual's identity or access rights.
+5. **Token (gaming)**: In gaming, a token can be a virtual item or currency that players can earn or purchase to use in the game.
+
+In general, a token is an object or code that represents a value, identity, or function, and is often used to facilitate transactions, authentication, or other interactions.","unit, text, word",subword,75.0,PASS,https://huggingface.co/docs/transformers/en/tokenizer_summary,llama3.2,v0.1
+Q003,What is Byte Pair Encoding?,BPE is a subword tokenization algorithm that merges frequent adjacent symbol pairs.,"Byte Pair Encoding (BPE) is a popular algorithm used in natural language processing (NLP) and machine learning, particularly in text compression and tokenization. It's a technique for reducing the dimensionality of text data by replacing sequences of characters with a single character or a short sequence of characters.
+
+The BPE algorithm works by iteratively merging the most common pairs of characters in the text data. Here's a step-by-step explanation:
+
+1. **Initialization**: The algorithm starts with a vocabulary of unique characters in the text data.
+2. **Pair counting**: For each pair of characters in the vocabulary, count the frequency of each pair in the text data.
+3. **Pair merging**: Identify the pair of characters with the highest frequency and merge them into a single character. This process is repeated until no more pairs can be merged.
+4. **Vocabulary update**: Update the vocabulary by removing the merged characters and adding the new character to the list.
+5. **Repeat**: Repeat steps 2-4 until no more pairs can be merged.
+
+The BPE algorithm has several benefits:
+
+* **Efficient compression**: BPE can compress text data significantly, making it suitable for applications like text compression and storage.
+* **Improved tokenization**: BPE can help improve tokenization by reducing the number of unique characters in the vocabulary, making it easier to represent text data.
+* **Robustness to out-of-vocabulary words**: BPE can handle out-of-vocabulary words by merging them with other characters, reducing the impact of rare words on the model.
+
+BPE is widely used in various NLP applications, including:
+
+* **Language modeling**: BPE is used to pre-process text data for language modeling tasks, such as predicting the next word in a sequence.
+* **Text compression**: BPE is used to compress text data, reducing its size and improving storage efficiency.
+* **Tokenization**: BPE is used to improve tokenization, making it easier to represent text data in machine learning models.
+
+Some popular libraries and frameworks that implement BPE include:
+
+* **Hugging Face Transformers**: A popular library for NLP tasks, including BPE-based tokenization.
+* **NLTK**: A popular library for NLP tasks, including BPE-based tokenization.
+* **spaCy**: A popular library for NLP tasks, including BPE-based tokenization.
+
+In summary, Byte Pair Encoding is a powerful algorithm for text compression and tokenization, widely used in NLP applications. Its ability to efficiently compress text data and improve tokenization makes it a popular choice for many NLP tasks.",pairs,"subword, merges, frequent",25.0,REVIEW,https://huggingface.co/docs/transformers/en/tokenizer_summary,llama3.2,v0.1
+Q004,What is WordPiece tokenization?,WordPiece is a subword tokenization algorithm that builds a vocabulary of word pieces.,"WordPiece tokenization is a type of subword tokenization used in natural language processing (NLP) tasks, particularly in the context of transformer-based models. It was introduced by Google in 2017 as a way to improve the efficiency and effectiveness of NLP models.
+
+In traditional tokenization, words are split into individual tokens, such as words or subwords, based on a fixed vocabulary. However, this approach can be limiting, especially when dealing with out-of-vocabulary (OOV) words or words with multiple possible subwordings.
+
+WordPiece tokenization addresses this limitation by using a combination of techniques:
+
+1. **Subwording**: Instead of splitting words into individual tokens, WordPiece tokenization splits words into subwords, which are smaller units that can be combined to form words.
+2. **Vocabulary**: A vocabulary is created that contains all possible subwordings of words in the dataset. This vocabulary is used to determine the subwordings of new, unseen words.
+3. **Probability**: The probability of a subwording is calculated based on the frequency of the subwording in the training data. Subwordings with higher probabilities are more likely to be used.
+
+The WordPiece tokenization algorithm works as follows:
+
+1. **Split words into subwords**: Words are split into subwords based on a probability threshold (usually set to 0.5). Subwords are created by splitting words at the middle or at a random point.
+2. **Create vocabulary**: The subwordings of all words in the training data are collected and used to create a vocabulary.
+3. **Calculate subword probabilities**: The probability of each subwording is calculated based on its frequency in the training data.
+4. **Use subword probabilities**: When processing new text, the subword probabilities are used to determine the most likely subwordings.
+
+WordPiece tokenization has several advantages, including:
+
+* **Improved efficiency**: WordPiece tokenization can reduce the number of tokens required to represent a piece of text, making it more efficient for processing and storage.
+* **Better handling of OOV words**: WordPiece tokenization can handle OOV words more effectively, as the vocabulary can be updated dynamically based on the training data.
+* **Improved performance**: WordPiece tokenization has been shown to improve the performance of transformer-based models on various NLP tasks.
+
+However, WordPiece tokenization also has some limitations, such as:
+
+* **Vocabulary size**: The size of the vocabulary can be large, which can be a limitation for models with limited computational resources.
+* **Subwording complexity**: The subwording process can be complex, especially for words with multiple possible subwordings.
+
+Overall, WordPiece tokenization is a powerful technique for improving the efficiency and effectiveness of NLP models, particularly in the context of transformer-based architectures.","subword, vocabulary, word",pieces,75.0,PASS,https://huggingface.co/docs/transformers/en/tokenizer_summary,llama3.2,v0.1
+Q005,What is SentencePiece?,SentencePiece is a language-independent tokenizer that supports BPE and Unigram.,"SentencePiece is an open-source library used for training and fine-tuning language models, particularly those based on the Transformer architecture. It was developed by Google and is widely used in the field of natural language processing (NLP).
+
+SentencePiece is designed to handle the task of tokenization, which is the process of breaking down text into individual words or tokens. However, unlike traditional tokenization methods, SentencePiece uses a different approach to handle out-of-vocabulary (OOV) words and subwording.
+
+In traditional tokenization, words are split into individual tokens based on spaces or punctuation. However, this approach can be problematic when dealing with words that have multiple possible subwords or when words are not separated by spaces or punctuation.
+
+SentencePiece solves this problem by using a technique called subwording, which involves breaking down words into smaller subwords that are more likely to appear together in the language. This approach allows for more efficient and effective tokenization, especially when dealing with words that have multiple possible subwords.
+
+SentencePiece also provides a number of other features that make it a popular choice for NLP tasks, including:
+
+* Support for multiple languages
+* Automatic subwording
+* Efficient tokenization
+* Support for out-of-vocabulary words
+* Integration with popular NLP frameworks and libraries
+
+Some of the key benefits of using SentencePiece include:
+
+* Improved efficiency and effectiveness of tokenization
+* Better handling of out-of-vocabulary words and subwording
+* Support for multiple languages
+* Easy integration with popular NLP frameworks and libraries
+
+Overall, SentencePiece is a powerful tool for NLP tasks, particularly those that involve tokenization and subwording. Its ability to handle out-of-vocabulary words and subwording makes it a popular choice for a wide range of applications, from language translation to text summarization.",,"language-independent, tokenizer, BPE, Unigram",0.0,REVIEW,https://github.com/google/sentencepiece,llama3.2,v0.1
+Q006,What are input tokens?,Input tokens are tokens sent to a language model including prompts and context.,"Input tokens are a fundamental concept in natural language processing (NLP) and machine learning. They are a way to represent and manipulate text data in a structured and efficient manner.
+
+In NLP, input tokens refer to the individual units of text that are used as input to a model or algorithm. These tokens can be words, characters, or even subwords (smaller units of words).
+
+Here are some common types of input tokens:
+
+1. **Word tokens**: These are individual words, such as ""hello"" or ""world"".
+2. **Character tokens**: These are individual characters, such as ""h"" or ""e"".
+3. **Subword tokens**: These are smaller units of words, such as ""un"" or ""der"" (from the word ""under"").
+4. **Special tokens**: These are tokens that have a special meaning, such as ""[UNK]"" (unknown word) or ""[PAD]"" (padding token).
+
+Input tokens are used in various NLP tasks, such as:
+
+1. **Text classification**: Input tokens are used to classify text into categories, such as spam vs. non-spam emails.
+2. **Language modeling**: Input tokens are used to predict the next word in a sequence, given the context of the previous words.
+3. **Machine translation**: Input tokens are used to translate text from one language to another.
+
+The use of input tokens offers several advantages, including:
+
+1. **Improved efficiency**: Input tokens can be processed more efficiently than raw text data.
+2. **Better handling of out-of-vocabulary words**: Input tokens can handle words that are not in the training data.
+3. **Improved generalization**: Input tokens can capture more nuanced relationships between words and context.
+
+Overall, input tokens are a powerful tool in NLP, allowing us to represent and manipulate text data in a more structured and efficient way.","input, tokens, context",prompt,75.0,PASS,https://ai.google.dev/gemini-api/docs/tokens,llama3.2,v0.1
+Q007,What are output tokens?,Output tokens are tokens generated by a language model in its response.,"Output tokens are a type of token that is used in natural language processing (NLP) and machine learning (ML) models, particularly in sequence-to-sequence models such as machine translation, text summarization, and chatbots.
+
+In a sequence-to-sequence model, the input is a sequence of tokens (e.g., words or subwords) and the output is also a sequence of tokens. The output tokens are the predicted tokens that the model thinks should be in the output sequence.
+
+Output tokens are typically used to evaluate the performance of a sequence-to-sequence model. They are usually generated by the model during training, and then used to calculate metrics such as perplexity, accuracy, and BLEU score.
+
+There are different types of output tokens, including:
+
+1. **Predicted tokens**: These are the tokens that the model predicts should be in the output sequence.
+2. **Reference tokens**: These are the actual tokens that are present in the reference output sequence.
+3. **Target tokens**: These are the tokens that the model is trying to predict, and are often used as the input to the model.
+
+The output tokens are typically used to calculate metrics such as:
+
+1. **Perplexity**: This measures how well the model predicts the output sequence.
+2. **Accuracy**: This measures how well the model predicts the correct tokens in the output sequence.
+3. **BLEU score**: This measures how well the model's output sequence matches the reference output sequence.
+
+Overall, output tokens are an important concept in sequence-to-sequence models, as they provide a way to evaluate the performance of the model and compare it to a reference output sequence.","output, tokens, generated",response,75.0,PASS,https://ai.google.dev/gemini-api/docs/tokens,llama3.2,v0.1
+Q008,What is a context window?,A context window is the maximum number of tokens a model can process in one interaction.,"A context window is a region of a user interface where the user can view and interact with a specific piece of content, such as a document, email, or web page. It is typically a rectangular area that contains the main content of the application or website, and is usually bounded by a border or other visual elements.
+
+The context window is often used to provide a clear and focused view of the content, making it easier for the user to read, edit, or manipulate the content. It can also be used to provide additional context or information related to the content, such as a sidebar or navigation menu.
+
+Context windows can be found in a variety of applications and websites, including:
+
+* Web browsers
+* Word processing and text editing applications
+* Email clients
+* Document management systems
+* Rich text editors
+
+The context window is an important part of the user interface, as it helps to provide a clear and focused view of the content, and makes it easier for the user to interact with the content.
+
+In the context of web development, a context window is often used to refer to the area of the page where the content is displayed, and is typically measured in pixels or other units of measurement.","context, process","maximum, tokens",50.0,REVIEW,https://huggingface.co/docs/transformers/en/model_doc/gpt2,llama3.2,v0.1
+Q009,What is greedy decoding?,Greedy decoding selects the next token with the highest probability.,"Greedy decoding is a technique used in coding theory to decode a received signal or message. It is a simple and efficient method for correcting errors in digital communication systems.
+
+In greedy decoding, the decoder starts by identifying the most likely error pattern in the received signal. It then selects the correction that minimizes the total number of errors, and repeats this process until all errors have been corrected.
+
+The greedy decoding algorithm works as follows:
+
+1. Initialize the decoded message as an empty string.
+2. Iterate through each bit of the received signal.
+3. For each bit, calculate the probability of the bit being correct or incorrect.
+4. Select the correction that minimizes the total number of errors.
+5. Update the decoded message with the selected correction.
+6. Repeat steps 3-5 until all bits have been processed.
+
+Greedy decoding is a heuristic approach, meaning it is not guaranteed to produce the correct solution, but it is often very effective in practice. The algorithm's performance depends on the specific coding scheme used, such as the type of error-correcting code (ECC) and the probability of errors.
+
+Greedy decoding has several advantages, including:
+
+* Simple implementation
+* Fast computation
+* Good performance for many types of error patterns
+
+However, greedy decoding also has some limitations, such as:
+
+* May not produce the correct solution for all error patterns
+* May not be suitable for very high-error-rate scenarios
+
+Greedy decoding is commonly used in various applications, including:
+
+* Digital communication systems (e.g., satellite communication, wireless communication)
+* Error-correcting codes (e.g., Reed-Solomon codes, BCH codes)
+* Data recovery and error correction in digital storage devices
+
+In summary, greedy decoding is a simple and efficient technique for decoding received signals or messages, but it may not always produce the correct solution, and its performance depends on the specific coding scheme used.",probability,"highest, next token",33.33,REVIEW,https://huggingface.co/docs/transformers/en/generation_strategies,llama3.2,v0.1
+Q010,What does temperature do during text generation?,Temperature controls randomness in token selection.,"Temperature is a hyperparameter in the Transformer model, which is commonly used in text generation tasks such as language translation, text summarization, and chatbots. In the context of text generation, temperature controls the probability distribution over the possible output tokens.
+
+When the temperature is high, the model is more likely to generate tokens that are closer to the most frequent tokens in the training data. This means that the generated text will be more likely to be coherent and fluent, but may also be more repetitive and less creative.
+
+On the other hand, when the temperature is low, the model is more likely to generate tokens that are less frequent in the training data. This means that the generated text will be more likely to be creative and diverse, but may also be less coherent and fluent.
+
+In general, a lower temperature value can lead to more creative and diverse output, while a higher temperature value can lead to more coherent and fluent output. However, the optimal temperature value depends on the specific task and dataset, and may require experimentation to find the best value.
+
+It's worth noting that temperature is not the only hyperparameter that affects the output of a Transformer model, and other hyperparameters such as learning rate, batch size, and number of epochs can also impact the quality of the generated text.","temperature, token",randomness,66.67,PASS,https://huggingface.co/docs/transformers/en/main_classes/text_generation,llama3.2,v0.1
